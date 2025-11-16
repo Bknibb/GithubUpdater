@@ -100,7 +100,7 @@ jobs:
           release/
         find ./GithubUpdaterExecutable/bin/Debug/net8.0 -type f ! -name "*.pdb" \
           -exec cp {} release/GithubUpdater/ \;
-        zip -r "GithubUpdater win-x64.zip" release
+        zip -r "GithubUpdater win-x64.zip" release/*
     - name: Release
       if: needs.detect.outputs.is_release == 'true'
       uses: softprops/action-gh-release@v2
