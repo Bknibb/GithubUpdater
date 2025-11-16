@@ -48,14 +48,10 @@ jobs:
         if: steps.extract_version.outputs.is_release == 'true'
         run: |
           expected_version="${{ steps.extract_version.outputs.version }}" # e.g., v1.0.0
-          echo 1
           csproj_patcher_version=$(grep -oPm1 "(?<=<Version>)[^<]+" "GithubUpdaterPatcher/GithubUpdaterPatcher.csproj")
-          echo 2
           csproj_executable_version=$(grep -oPm1 "(?<=<Version>)[^<]+" "GithubUpdaterExecutable/GithubUpdaterExecutable.csproj")
-          echo 3
           patcher_version="v${csproj_patcher_version}"
           executable_version="v${csproj_executable_version}"
-          echo 4
           
           echo "Expected version from commit: $expected_version"
           echo "Version in GithubUpdaterPatcher.csproj: $patcher_version"
