@@ -53,12 +53,11 @@ jobs:
           patcher_version="v${csproj_patcher_version}"
           executable_version="v${csproj_executable_version}"
           
-
           echo "Expected version from commit: $expected_version"
           echo "Version in GithubUpdaterPatcher.csproj: $patcher_version"
           echo "Version in GithubUpdaterExecutable.csproj: $executable_version"
-
-          if [ "$expected_version" != "$patcher_version" ] || [ "$expected_version" != "$executable_version" ] then
+          
+          if [ "$expected_version" != "$patcher_version" ] || [ "$expected_version" != "$executable_version" ]; then
             echo "❌ Version mismatch!"
             echo "Expected: $expected_version"
             echo "Found in GithubUpdaterPatcher.csproj: $patcher_version"
