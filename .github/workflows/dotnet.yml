@@ -86,11 +86,11 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: GithubUpdaterExecutable win-x64
-        path: ./GithubUpdaterExecutable/bin/Debug/net8.0
+        path: ./GithubUpdaterExecutable/bin/Debug/net8.0/win-x64
     - name: Upload Patcher Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: GithubUpdaterPatcher win-x64
+        name: GithubUpdaterPatcher
         path: ./GithubUpdaterPatcher/bin/Debug/net35
     - name: Zip For Release
       if: needs.detect.outputs.is_release == 'true'
@@ -98,9 +98,10 @@ jobs:
         mkdir -p release/GithubUpdater
         cp ./GithubUpdaterPatcher/bin/Debug/net35/GithubUpdater.dll \
           release/
-        find ./GithubUpdaterExecutable/bin/Debug/net8.0 -type f ! -name "*.pdb" \
+        find ./GithubUpdaterExecutable/bin/Debug/net8.0/win-x64 -type f ! -name "*.pdb" \
           -exec cp {} release/GithubUpdater/ \;
-        zip -rj "GithubUpdater win-x64.zip" release
+        cd release
+        zip -r "../GithubUpdater win-x64.zip" *
     - name: Release
       if: needs.detect.outputs.is_release == 'true'
       uses: softprops/action-gh-release@v2
