@@ -85,12 +85,12 @@ jobs:
     - name: Upload Executable Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: build win-x64
+        name: GithubUpdaterExecutable win-x64
         path: ./GithubUpdaterExecutable/bin/Debug/net8.0
     - name: Upload Patcher Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: build win-x64
+        name: GithubUpdaterPatcher win-x64
         path: ./GithubUpdaterPatcher/bin/Debug/net35
     - name: Zip For Release
       if: needs.detect.outputs.is_release == 'true'
