@@ -10,7 +10,7 @@ namespace GithubUpdater
 {
     public static class Patcher
     {
-        public static string githubUpdaterExe = Path.Combine(Paths.PatcherPluginPath, "GithubUpdater\\GithubUpdater.exe");
+        public static string githubUpdaterExe = Path.Combine(Paths.PatcherPluginPath, "GithubUpdater\\GithubUpdaterExecutable.exe");
         public static IEnumerable<string> TargetDLLs
         {
             get
